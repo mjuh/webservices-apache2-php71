@@ -1,0 +1,9 @@
+#!@execline@/bin/execlineb -P
+@execline@/bin/export PATH @execline@/bin:@s6PortableUtils@/bin:@coreutils@/bin
+foreground { cp @postfix@/bin/postdrop /run/bin/postdrop }
+backtick UID { stat -c '%u' /var/spool/postfix/maildrop }
+backtick GID { stat -c '%g' /var/spool/postfix/maildrop }
+importas -u UID UID
+importas -u GID GID
+foreground { s6-chmod 2555 /run/bin/postdrop }
+s6-chown -u $UID -g $GID /run/bin/postdrop
