@@ -203,7 +203,7 @@ php71Packages = {
 rootfs = mkRootfs {
   name = "apache2-php71-rootfs";
   src = ./rootfs;
-  inherit curl coreutils findutils apacheHttpdmpmITK apacheHttpd mjHttpErrorPages php71 postfix s6 execline;
+  inherit curl coreutils findutils apacheHttpdmpmITK apacheHttpd mjHttpErrorPages php71 postfix s6 execline mjperl5Packages;
   ioncube = ioncube.v71;
   s6PortableUtils = s6-portable-utils;
   s6LinuxUtils = s6-linux-utils;
