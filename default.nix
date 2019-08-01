@@ -34,6 +34,7 @@ php71 = mkDerivation rec {
   outputs = [ "out" "dev" ];
   enableParallelBuilding = true;
   buildInputs = [
+    postfix
     autoconf
     automake
     pkgconfig
