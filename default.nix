@@ -44,7 +44,7 @@ pkgs.dockerTools.buildLayeredImage rec {
     coreutils
     libjpeg_turbo
     (optipng.override{ inherit libpng ;})
-    gifsicle
+    gifsicle cacert
     perl
   ] ++ collect isDerivation phpPackages.php71Packages;
   config = {
