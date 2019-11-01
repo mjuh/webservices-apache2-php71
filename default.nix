@@ -46,7 +46,9 @@ pkgs.dockerTools.buildLayeredImage rec {
     (optipng.override{ inherit libpng ;})
     gifsicle cacert zip
     perl
-  ] ++ collect isDerivation phpPackages.php71Packages;
+  ]
+  ++ collect isDerivation phpPackages.php71Packages
+  ++ collect isDerivation mjperl5Packages;
   config = {
     Entrypoint = [ "${rootfs}/init" ];
     Env = [
