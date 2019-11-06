@@ -16,7 +16,7 @@ let
   php71DockerArgHints = lib.phpDockerArgHints php.php71;
 
   rootfs = mkRootfs {
-    name = "apache2-rootfs";
+    name = "apache2-rootfs-php71";
     src = ./rootfs;
     inherit curl coreutils findutils apacheHttpdmpmITK apacheHttpd
       mjHttpErrorPages postfix s6 execline;
