@@ -18,7 +18,7 @@ let
   rootfs = mkRootfs {
     name = "apache2-rootfs-php71";
     src = ./rootfs;
-    inherit curl coreutils findutils apacheHttpdmpmITK apacheHttpd
+    inherit zlib curl coreutils findutils apacheHttpdmpmITK apacheHttpd
       mjHttpErrorPages s6 execline;
     postfix = sendmail;
     php71 = php.php71;
@@ -50,6 +50,7 @@ pkgs.dockerTools.buildLayeredImage rec {
     perl
     gcc-unwrapped.lib
     glibc
+    zlib
   ]
   ++ collect isDerivation phpPackages.php71Packages
   ++ collect isDerivation mjperl5Packages;
