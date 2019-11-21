@@ -51,6 +51,7 @@ pkgs.dockerTools.buildLayeredImage rec {
     gcc-unwrapped.lib
     glibc
     zlib
+    connectorc
   ]
   ++ collect isDerivation phpPackages.php71Packages
   ++ collect isDerivation mjperl5Packages;
