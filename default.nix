@@ -2,7 +2,7 @@
 
 with import <nixpkgs> {
   overlays = [
-    (import (builtins.fetchGit { url = "git@gitlab.intr:_ci/nixpkgs.git"; ref = "master"; }))
+    (import (builtins.fetchGit { url = "git@gitlab.intr:_ci/nixpkgs.git"; ref = (if builtins ? getEnv then builtins.getEnv "GIT_BRANCH" else "master"); }))
   ];
 };
 
@@ -13,15 +13,14 @@ let
   inherit (lib.attrsets) collect isDerivation;
   inherit (stdenv) mkDerivation;
 
-  php71DockerArgHints = lib.phpDockerArgHints php.php71;
+  php71DockerArgHints = lib.phpDockerArgHints php71;
 
   rootfs = mkRootfs {
     name = "apache2-rootfs-php71";
     src = ./rootfs;
     inherit zlib curl coreutils findutils apacheHttpdmpmITK apacheHttpd
-      mjHttpErrorPages s6 execline;
+      mjHttpErrorPages s6 execline php71;
     postfix = sendmail;
-    php71 = php.php71;
     mjperl5Packages = mjperl5lib;
     ioncube = ioncube.v71;
     s6PortableUtils = s6-portable-utils;
@@ -50,9 +49,10 @@ pkgs.dockerTools.buildLayeredImage rec {
     gcc-unwrapped.lib
     glibc
     zlib
-    connectorc perl520
+    mariadbConnectorC
+    perl520
   ]
-  ++ collect isDerivation phpPackages.php71Packages
+  ++ collect isDerivation php71Packages
   ++ collect isDerivation mjperl5Packages;
   config = {
     Entrypoint = [ "${rootfs}/init" ];
