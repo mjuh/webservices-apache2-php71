@@ -1,2 +1,2 @@
-@Library('mj-shared-library') _
+@Library('mj-shared-library@test-docker-image-structure') _
 buildWebService()
