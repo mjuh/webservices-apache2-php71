@@ -115,6 +115,14 @@ in maketestPhp {
       command = "${testPhpMariadbConnector}";
     })
     (dockerNodeTest {
+      description = "Run WordPress test.";
+      action = "succeed";
+      command = wordpressScript {
+        inherit pkgs;
+        inherit domain;
+      };
+    })
+    (dockerNodeTest {
       description = "Take WordPress screenshot";
       action = "succeed";
       command = builtins.concatStringsSep " " [
