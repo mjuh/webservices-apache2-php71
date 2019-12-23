@@ -112,7 +112,7 @@ in maketestPhp {
     (dockerNodeTest {
       description = "Run mariadb connector test.";
       action = "succeed";
-      command = "${testPhpMariadbConnector}";
+      command = testPhpMariadbConnector { inherit pkgs; };
     })
     (dockerNodeTest {
       description = "Run WordPress test.";
