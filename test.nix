@@ -64,7 +64,7 @@ in maketestPhp {
       command = testDiffPy {
         inherit pkgs;
         sampleJson = (./tests/. + "/${phpVersion}.json");
-        output = "/tmp/xchg/coverage-data/deepdiff-with-excludes.html";
+        output = "/tmp/xchg/coverage-data/deepdiff-with-excludes.json";
         excludes = import ./tests/diff-to-skip.nix;
       };
     })
@@ -74,7 +74,7 @@ in maketestPhp {
       command = testDiffPy {
         inherit pkgs;
         sampleJson = (./tests/. + "/web34/${phpVersion}.json");
-        output = "/tmp/xchg/coverage-data/deepdiff-web34.html";
+        output = "/tmp/xchg/coverage-data/deepdiff-web34.json";
       };
     })
     (dockerNodeTest {
@@ -83,7 +83,7 @@ in maketestPhp {
       command = testDiffPy {
         inherit pkgs;
         sampleJson = (./tests/. + "/web34/${phpVersion}.json");
-        output = "/tmp/xchg/coverage-data/deepdiff-web34-with-excludes.html";
+        output = "/tmp/xchg/coverage-data/deepdiff-web34-with-excludes.json";
         excludes = import ./tests/diff-to-skip.nix;
       };
     })
@@ -199,7 +199,7 @@ in maketestPhp {
     (dockerNodeTest {
       description = "deepdiff iterable_item_removed";
       action = "succeed";
-      command = "jq .iterable_item_removed /tmp/xchg/coverage-data/deepdiff-with-excludes.html ; jq .iterable_item_removed /tmp/xchg/coverage-data/deepdiff-with-excludes.html | grep null ";
+      command = "jq .iterable_item_removed /tmp/xchg/coverage-data/deepdiff-with-excludes.json ; jq .iterable_item_removed /tmp/xchg/coverage-data/deepdiff-with-excludes.json | grep null ";
     })
   ];
 }{}
