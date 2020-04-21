@@ -1,6 +1,6 @@
-# Apache PHP 7.4
+# Apache PHP 7.1
 
-Docker container with Apache PHP 7.4 build by [Nix package manager](https://nixos.org/).
+Docker container with Apache PHP 7.1 build by [Nix package manager](https://nixos.org/).
 
 ## Prerequisites
 
@@ -9,21 +9,21 @@ Before you begin, ensure you have met the following requirements:
 * You have a `<Linux/Mac>` machine.
 * You have installed the latest version of [Nix package manager](https://nixos.org/) and [Docker daemon](https://www.docker.com).
 
-## Building Apache PHP 7.4
+## Building Apache PHP 7.1
 
-To build Apache PHP 7.4, follow these steps:
+To build Apache PHP 7.1, follow these steps:
 
 Linux and macOS:
 ``` shell
 docker load --input $(nix-build --argstr overlayUrl https://github.com/mjuh/ci-nixpkgs.git --no-out-link)
 ```
 
-## Using Apache PHP 7.4
+## Using Apache PHP 7.1
 
-To use Apache PHP 7.4, call:
+To use Apache PHP 7.1, call:
 
 ``` shell
-docker inspect docker-registry.intr/webservices/apache2-php74 | grep cmd
+docker inspect docker-registry.intr/webservices/apache2-php71 | grep cmd
 ```
 
 which will produce flags for `docker run` command as a hint.
@@ -48,17 +48,17 @@ docker run --read-only --network=host \
         -e PHP_SECURITY=/etc/phpsec/$SECURITY_LEVEL \
         --ulimit stack=-1:-1 \
         --cap-add SYS_ADMIN \
-        --security-opt apparmor:unconfined docker-registry.intr/webservices/apache2-php74:latest
+        --security-opt apparmor:unconfined docker-registry.intr/webservices/apache2-php71:latest
 ```
 before running the command you need to provide all variables:
 
 * `$SITES_CONF_PATH` should point to a directory with Apache's configuration files for vhosts.
 * `$SECURITY_LEVEL` should be one of: `default`, `unsafe`, `hardened`, `hardened-nochmod`.
-* `$SOCKET_HTTP_PORT` any free port on your computer, e.g. `8074`.
+* `$SOCKET_HTTP_PORT` any free port on your computer, e.g. `8071`.
 
-## Contributing to Apache PHP 7.4
+## Contributing to Apache PHP 7.1
 
-To contribute to Apache PHP 7.4, follow these steps:
+To contribute to Apache PHP 7.1, follow these steps:
 
 1. Fork this repository.
 2. Create a branch: `git checkout -b <branch_name>`.
