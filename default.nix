@@ -20,7 +20,7 @@ let
     name = "apache2-rootfs-php71";
     src = ./rootfs;
     inherit zlib curl coreutils findutils apacheHttpdmpmITK apacheHttpd
-      mjHttpErrorPages s6 execline php71;
+      mjHttpErrorPages s6 execline php71 logger;
     postfix = sendmail;
     mjperl5Packages = mjperl5lib;
     ioncube = ioncube.v71;
@@ -52,6 +52,7 @@ pkgs.dockerTools.buildLayeredImage rec {
     glibc
     zlib
     mariadbConnectorC
+    logger
     perl520
   ]
   ++ collect isDerivation php71Packages
