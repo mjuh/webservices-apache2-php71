@@ -49,6 +49,7 @@ pkgs.dockerTools.buildLayeredImage rec {
     mariadbConnectorC
     logger
     perl520
+    libwebp
   ]
   ++ collect isDerivation php71Packages
   ++ collect isDerivation mjperl5Packages;
